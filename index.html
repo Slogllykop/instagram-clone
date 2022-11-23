@@ -23,10 +23,10 @@
                     <div class="logo_container">
                         <img src="img/login/instagram_name_logo.png" alt="Instagram">
                     </div>
-                    <form class="login_form">
-                        <input type="text" placeholder="Phone number, username, or email">
-                        <input type="password" placeholder="Password">
-                        <button type="submit">Log In</button>
+                    <form class="login_form" onsubmit="return false">
+                        <input class="inputted_username" type="text" placeholder="Phone number, username, or email">
+                        <input class="inputted_password" type="password" placeholder="Password">
+                        <button class="login_submit" type="submit" onclick="login()" disabled>Log In</button>
                     </form>
                     <div class="or-seperator">
                         <span></span>
@@ -97,5 +97,6 @@
             </div>
         </div>
     </div>
+    <script src="js/index.js"></script>
 </body>
 </html>
