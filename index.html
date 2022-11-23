@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="img/favicon.webp" type="image/x-icon">
     <link rel="stylesheet" href="css/index.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,30 +18,84 @@
             <div class="login_page--img_preview">
                 <img src="img/login/preview.png" alt="Preview">
             </div>
-            <div class="login_page--details">
-                <div class="logo_container">
-                    <img src="img/login/instagram_name_logo.png" alt="Instagram">
+            <div style="width: 400px; display: flex; flex-direction: column; gap: 0.7rem;">
+                <div class="login_page--details">
+                    <div class="logo_container">
+                        <img src="img/login/instagram_name_logo.png" alt="Instagram">
+                    </div>
+                    <form class="login_form">
+                        <input type="text" placeholder="Phone number, username, or email">
+                        <input type="password" placeholder="Password">
+                        <button type="submit">Log In</button>
+                    </form>
+                    <div class="or-seperator">
+                        <span></span>
+                        <p>OR</p>
+                        <span></span>
+                    </div>
+                    <div class="facebook_login">
+                        <img src="img/login/facebook_logo.png" alt="facebook">
+                        <span>Log in with Facebook</span>
+                    </div>
+                    <div class="wrong_message">
+                        <div class="wrong_text">Sorry, your password was incorrect. Please <br> double-check your password.</div>
+                    </div>
+                    <div class="forgot_password">
+                        <a href="https://www.instagram.com/accounts/password/reset/">Forgot password?</a>
+                    </div>
                 </div>
-                <form class="login_form">
-                    <input type="text" placeholder="Phone number, username, or email">
-                    <input type="password" placeholder="Password">
-                    <button type="submit">Log In</button>
-                </form>
-                <div class="or-seperator">
-                    <span></span>
-                    <p>OR</p>
-                    <span></span>
+                <div class="login_page--signup">
+                    <div class="signup">
+                        <p>Don't have an account?
+                            <a href="https://www.instagram.com/accounts/emailsignup/" rel="external" target="_blank">Sign up</a>
+                        </p>
+                    </div>
                 </div>
-                <div class="facebook_login">
-                    <img src="img/login/facebook_logo.png" alt="facebook">
-                    <span>Log in with Facebook</span>
-                </div>
-                <div class="forgot_password">
-                    <a href="#">Forgot password?</a>
+                <div class="login_page--get_app">
+                    <div class="login_page--get_app--text">
+                        <p>Get the app.</p>
+                    </div>
+                    <div class="login_page--get_app--content">
+                        <div class="login_img_container">
+                            <a href="https://play.google.com/store/apps/details?id=com.instagram.android" target="_blank" rel="external">
+                                <img src="img/login/get-google.png" alt="Google play">
+                            </a>
+                        </div>
+                        <div class="login_img_container">
+                            <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt&referrer=appbadge&source=www.instagram.com&mode=mini&pos=0%2C1%2C1374%2C674" rel="external">
+                                <img src="img/login/get-microsoft.png" alt="Google play">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="login_footer"></div>
+        <div class="login_footer">
+            <div class="login_footer--content">
+                <div class="footer-links">
+                    <a href="https://about.meta.com/" target="_blank" rel="external">Meta</a>
+                    <a href="https://about.instagram.com/" target="_blank" rel="external">About</a>
+                    <a href="https://about.instagram.com/blog/" target="_blank" rel="external">Blog</a>
+                    <a href="https://www.instagram.com/about/jobs/" target="_blank" rel="external">Jobs</a>
+                    <a href="https://help.instagram.com/" target="_blank" rel="external">Help</a>
+                    <a href="https://developers.facebook.com/docs/instagram" target="_blank" rel="external">API</a>
+                    <a href="https://www.instagram.com/legal/privacy/" target="_blank" rel="external">Privacy</a>
+                    <a href="https://www.instagram.com/legal/terms/" target="_blank" rel="external">Terms</a>
+                    <a href="https://www.instagram.com/directory/profiles/" target="_blank" rel="external">Top Accounts</a>
+                    <a href="https://www.instagram.com/directory/hashtags/" target="_blank" rel="external">Hashtags</a>
+                    <a href="https://www.instagram.com/explore/locations/" target="_blank" rel="external">Locations</a>
+                    <a href="https://www.instagram.com/web/lite/" target="_blank" rel="external">Instagram Lite</a>
+                    <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank" rel="external">Contact Uploading & Non-Users</a>
+                </div>
+                <div class="footer-others">
+                    <div class="language">
+                        <div class="current-language">English</div>
+                        <div class="language-arrow">˅</div>
+                    </div>
+                    <div class="copyright">&copy; 2022 Instagram from Meta</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

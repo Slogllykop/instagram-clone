@@ -7,6 +7,7 @@ $secondary-text: rgb(150, 150, 150);
 $blue: rgb(0, 149, 246);
 $fb-blue: rgb(59, 89, 152);
 $link: rgb(0, 55, 107);
+$red: rgb(237, 73, 86);
 
 @mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
@@ -26,15 +27,17 @@ $link: rgb(0, 55, 107);
         width: 100vw; height: 100vh;
 
         &--img_preview {
-            position: relative;
-            // background-color: black
+            min-width: 465px;
+            pointer-events: none;
+            user-select: none;
         }
 
         &--details {
             @include flex(column, center, center);
             padding: 2.5rem;
             padding-bottom: 0;
-            width: 25vw; height: auto;
+            // width: 25vw; height: auto;
+            max-width: 21.875rem; height: auto;
             background-color: $primary-background;
             border: 1px solid $border-color;
             
@@ -44,6 +47,8 @@ $link: rgb(0, 55, 107);
                 cursor: pointer;
                 margin-bottom: 2.5rem;
                 img { width: 60% }
+                user-select: none;
+                pointer-events: none;
             }
 
             & > .login_form {
@@ -110,8 +115,22 @@ $link: rgb(0, 55, 107);
                 font-weight: getFontWeight(medium);
                 color: $fb-blue;
                 margin: 0.9rem 0;
+                user-select: none;
 
-                img { width: 1rem }
+                img { width: 1rem; pointer-events: none;}
+            }
+
+            & > .wrong_message {
+                display: none;
+                width: 100%;
+                text-align: center;
+
+                & > .wrong_text {
+                    color: $red;
+                    font-size: 0.8rem;
+                    font-weight: getFontWeight(normal);
+                    margin: 1.25rem 0;
+                }
             }
 
             & > .forgot_password {
@@ -129,10 +148,93 @@ $link: rgb(0, 55, 107);
                 }
             }
         }
+
+        &--signup {
+            @extend .login_page--details;
+            padding: 1.5rem 2.5rem;
+
+            p {font-size: 0.9rem}
+            a {
+                text-decoration: none; 
+                color: $blue;
+                font-weight: getFontWeight(medium);
+            }
+        }
+
+        &--get_app {
+            @include flex(column, center, center);
+            max-width: 21.875rem; height: auto;
+            gap: 0.5rem;
+            margin-top: 0.7rem;
+
+            &--text {
+                font-size: 0.9rem;
+                font-weight: getFontWeight(normal);
+                margin-bottom: 0.5rem;
+            }
+
+            &--content {
+                @include flex(row, center, center);
+                gap: 0.5rem;
+                width: 100%;
+                margin-bottom: 1rem;
+                
+                & > .login_img_container {
+                    @include flex(row, center, center);
+                    width: 40%;
+                    height: 3.5rem;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    user-select: none;
+                    
+                    img { max-width: 100%; pointer-events: none;}
+                }
+
+                :nth-child(2) {
+                    max-width: 32.5%;
+                }
+            }
+        }
     }
 
     .login_footer {
         width: 100vw; height: 16vh;
-    }
+        // background-color: aqua;
 
+        &--content {
+            @include flex(column, none, center);
+            gap: 1.2rem;
+
+            & > .footer-links {
+                @include flex(row, space-between, center);
+                gap: 0.8rem;
+
+                a {
+                    text-decoration: none;
+                    color: $secondary-text;
+                    font-size: 0.75rem;
+                    font-weight: getFontWeight(normal);
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            & > .footer-others {
+                display: flex;
+                gap: 0.9rem;
+                font-size: 0.75rem;
+                color: $secondary-text;
+
+                & > .language {
+                    @include flex(row, center, center);
+                    gap: 0.25rem;
+                    font-weight: getFontWeight(normal);
+                    cursor: pointer;
+                    user-select: none;
+                }
+            }
+        }
+    }
 }
