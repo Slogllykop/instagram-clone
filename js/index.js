@@ -12,6 +12,8 @@ const loginButton = document.querySelector('.login_submit');
 const loginForm = document.querySelector('.login_form');
 
 
+const homePage = document.querySelector('.home_container');
+
 function checkLength() {
     if (loginUsername.value.length !== 0 && loginPassword.value.length >= 4) {
         console.log("user:", loginUsername.value.length, "pass:", loginPassword.value.length);
@@ -32,6 +34,7 @@ const login = () => {
     if (loginUsername.value === USERNAME && loginPassword.value === PASSWORD) {
         console.log('Login successful');
         loginPage.style.display = 'none';
+        homePage.style.display = 'block';
     } else {
         console.log('Login failed');
         document.querySelector('.wrong_message').style.display = "block";
