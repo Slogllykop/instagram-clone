@@ -160,6 +160,7 @@ $dm-red: rgb(255, 48, 64);
                     @include flex(row, center, center);
                     width: 18%;
                     cursor: pointer;
+                    user-select: none;
 
                     img {
                         border-radius: 50%;
@@ -191,6 +192,7 @@ $dm-red: rgb(255, 48, 64);
                     font-size: 0.8rem;
                     font-weight: getFontWeight(medium);
                     color: $blue;
+                    user-select: none;
                 }
             }
 
@@ -226,7 +228,6 @@ $dm-red: rgb(255, 48, 64);
                     margin: 0.55rem 0;
                     margin-left: 2%;
                     width: 98%;
-                    // border: 1px solid red;
 
                     & > .profile {
                         @include flex(row, space-between, center);
@@ -236,8 +237,10 @@ $dm-red: rgb(255, 48, 64);
                             width: 10%;
 
                             img {
+                                user-select: none;
                                 width: 100%;
                                 border-radius: 50%;
+                                user-select: none;
                             }
                         }
 
@@ -252,6 +255,8 @@ $dm-red: rgb(255, 48, 64);
                                 font-size: 0.8rem;
                                 font-weight: getFontWeight(medium);
                                 color: black;
+                                cursor: pointer;
+                                user-select: none;
 
                                 img {
                                     width: 0.9rem;
@@ -273,6 +278,7 @@ $dm-red: rgb(255, 48, 64);
                                 text-decoration: none;
                                 color: $blue;
                                 font-weight: getFontWeight(medium);
+                                user-select: none;
                             }
                         }
                     }
