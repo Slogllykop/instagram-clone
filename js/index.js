@@ -1,6 +1,6 @@
 'use-strict';
 
-const USERNAME = 'admin';
+const USERNAME = 'myusername';
 const PASSWORD = '1234';
 
 const loginPage = document.querySelector('.login_container');

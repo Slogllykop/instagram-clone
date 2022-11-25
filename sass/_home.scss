@@ -1,6 +1,8 @@
 @import "font";
 @import "variables";
 
+$navbar-width: 15.25rem;
+
 $dm-red: rgb(255, 48, 64);
 
 .home_container {
@@ -11,8 +13,10 @@ $dm-red: rgb(255, 48, 64);
 
     #{&}--navbar {
         @include flex(column, space-between, stretch);
-        position: absolute;
-        max-width: 15.25rem;
+        overflow-y: hidden;
+        position: fixed;
+        z-index: 1;
+        max-width: $navbar-width;
         min-height: 100vh;
         background-color: $primary-background;
         border-right: 1px solid $border-color;
@@ -121,6 +125,201 @@ $dm-red: rgb(255, 48, 64);
                 & > .navbar_more--text {
                     font-size: 1rem;
                     font-weight: getFontWeight(normal);
+                }
+            }
+        }
+    }
+
+    #{&}--main {
+        @include flex(row, center, flex-start);
+        width: calc(100% - $navbar-width);
+        transform: translateX($navbar-width);
+        min-height: 100vh;
+        padding-top: 1.7rem;
+
+        & > .main_page--content {
+            min-width: 470px;
+            min-height: 140vh;
+            border: 1px solid hotpink;
+            margin: 0 2rem;
+            border-radius: 0.5rem;
+        }
+
+        & > .main_page--profile_info {
+            @include flex(column, flex-start, center);
+            height: 100vh;
+            width: 20rem;
+            margin-top: 1.5rem;
+            margin-right: 4%;
+
+            & > .profile {
+                @include flex(row, space-between, center);
+                width: 100%;
+
+                & > .profile_image_container {
+                    @include flex(row, center, center);
+                    width: 18%;
+                    cursor: pointer;
+
+                    img {
+                        border-radius: 50%;
+                        width: 100%;
+                        pointer-events: none;
+                    }
+                }
+
+                & > .username_container {
+                    @include flex(column, center, flex-start);
+                    width: 57%;
+                    gap: 0.1rem;
+
+                    & > .username {
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                        font-weight: getFontWeight(medium);
+                    }
+
+                    & > .name {
+                        font-size: 0.9rem;
+                        font-weight: getFontWeight(normal);
+                        color: $secondary-text;
+                    }
+                }
+
+                & > .switch_button_container > a {
+                    text-decoration: none;
+                    font-size: 0.8rem;
+                    font-weight: getFontWeight(medium);
+                    color: $blue;
+                }
+            }
+
+            & > .suggestions {
+                width: 100%;
+                margin: 1.2rem 0;
+
+                & > .heading_container {
+                    @include flex(row, space-between, center);
+                    margin-bottom: 0.9rem;
+
+                    & > .heading {
+                        font-size: 0.9rem;
+                        font-weight: getFontWeight(medium);
+                        color: $secondary-text;
+                    }
+
+                    & > .see_all_container {
+                        @include flex(row, center, center);
+
+                        a {
+                            text-decoration: none;
+                            font-size: 0.75rem;
+                            font-weight: getFontWeight(medium);
+                            color: black;
+                        }
+                    }
+                }
+
+                & > .profile_container {
+                    @include flex(column, center, center);
+                    gap: 1rem;
+                    margin: 0.55rem 0;
+                    margin-left: 2%;
+                    width: 98%;
+                    // border: 1px solid red;
+
+                    & > .profile {
+                        @include flex(row, space-between, center);
+
+                        & > .profile_img_container {
+                            @include flex(row, center, center);
+                            width: 10%;
+
+                            img {
+                                width: 100%;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        & > .username_container {
+                            @include flex(column, center, flex-start);
+                            gap: 0.2rem;
+                            width: 69%;
+
+                            & > .username {
+                                @include flex(row, center, center);
+                                gap: 0.15rem;
+                                font-size: 0.8rem;
+                                font-weight: getFontWeight(medium);
+                                color: black;
+
+                                img {
+                                    width: 0.9rem;
+                                }
+                            }
+
+                            & > .mutuals {
+                                font-size: 0.8rem;
+                                font-weight: getFontWeight(normal);
+                                color: $secondary-text;
+                            }
+                        }
+
+                        & > .follow_container {
+                            @include flex(row, center, center);
+
+                            a {
+                                font-size: 0.75rem;
+                                text-decoration: none;
+                                color: $blue;
+                                font-weight: getFontWeight(medium);
+                            }
+                        }
+                    }
+                }
+            }
+
+            & > .more_info {
+                width: 100%;
+
+                & > .more_info--links_container {
+                    @include flex(row, flex-start, center);
+                    flex-wrap: wrap;
+                    gap: 0.2rem;
+
+                    & > .more_info--links_container--link {
+                        @include flex(row, center, center);
+                        gap: 0.2rem;
+
+                        a {
+                            line-height: 125%;
+                            font-size: 0.75rem;
+                            color: $link-home;
+                            text-decoration: none;
+                            font-weight: getFontWeight(light);
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+
+                            &:last-child:hover {
+                                text-decoration: none;
+                            }
+                        }
+
+                        span {
+                            width: 2px;
+                            height: 2px;
+                            border-radius: 50%;
+                            background-color: $link-home;
+                        }
+                    }
+                }
+
+                & > .more_info--others {
+                    margin-top: 1.5rem;
+                    font-size: 0.8rem;
+                    color: $link-home;
                 }
             }
         }
