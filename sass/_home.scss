@@ -1,20 +1,22 @@
-@import 'font';
-@import 'variables';
+@import "font";
+@import "variables";
 
 $dm-red: rgb(255, 48, 64);
 
 .home_container {
     display: none;
-    width: 100vw; min-height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
     background-color: $secondary-background;
 
     #{&}--navbar {
+        @include flex(column, space-between, stretch);
         position: absolute;
         max-width: 15.25rem;
         min-height: 100vh;
         background-color: $primary-background;
         border-right: 1px solid $border-color;
-        
+
         & > .navbar_logo {
             max-width: 63%;
             user-select: none;
@@ -38,11 +40,11 @@ $dm-red: rgb(255, 48, 64);
                 padding: 0.5rem 1.2rem;
                 width: 90%;
                 gap: 0.9rem;
-                
+
                 &:hover {
                     background-color: $secondary-background;
                 }
-                
+
                 & > .navlink_icon > img {
                     transition: all 0.2s ease-in-out;
                     width: 1.75rem;
@@ -57,7 +59,7 @@ $dm-red: rgb(255, 48, 64);
                     font-size: 1rem;
                     font-weight: getFontWeight(normal);
                 }
-                
+
                 & > .navlink_text.active {
                     font-weight: getFontWeight(medium);
                 }
@@ -79,7 +81,7 @@ $dm-red: rgb(255, 48, 64);
                     background-color: $dm-red;
                     border-radius: 0.7rem;
                     border: 1px solid white;
-                    transform: translate(-50%,-25%)
+                    transform: translate(-50%, -25%);
                 }
             }
         }
@@ -88,7 +90,8 @@ $dm-red: rgb(255, 48, 64);
             @include flex(row, center, center);
             user-select: none;
             width: 100%;
-            
+            padding-bottom: 1rem;
+
             & > .navbar_more {
                 @include flex(row, flex-start, center);
                 transition: all 0.2s ease-in-out;
@@ -102,25 +105,24 @@ $dm-red: rgb(255, 48, 64);
                 &:hover {
                     background-color: $secondary-background;
                 }
-    
+
                 & > .navbar_more--icon {
                     & > img {
                         transition: all 0.2s ease-in-out;
                         width: 1.75rem;
                         margin-left: -0.7rem;
-    
+
                         &:hover {
                             transform: scale(1.1);
                         }
                     }
                 }
-    
+
                 & > .navbar_more--text {
                     font-size: 1rem;
                     font-weight: getFontWeight(normal);
                 }
             }
-
         }
     }
 }
