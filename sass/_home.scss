@@ -1,20 +1,6 @@
 @import "font";
 @import "variables";
 
-::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: $border-color;
-    border-radius: 1px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
 @mixin px1263 {
     @media only screen and (max-width: 1263px) {
         @content;
@@ -428,20 +414,108 @@ $navbar-width: 15.25rem;
 
         & > .main_page--content {
             width: 470px;
-            min-height: 140vh;
-            border: 1px solid hotpink;
+            min-height: 100vh;
             margin: -2rem 2rem 0;
             border-radius: 0.5rem;
-
-            @include px767 {
-                // z-index: -1;
-            }
 
             @include px470 {
                 margin: 0;
                 min-width: none;
                 max-width: 470px;
                 width: 100%;
+            }
+
+            & > .stories_container {
+                position: relative;
+                width: 100%;
+                height: 7.4375rem;
+                background-color: $primary-background;
+                border-radius: 0.5rem;
+                border: 1px solid $border-color;
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: 4.125rem;
+                overflow-x: auto;
+                overscroll-behavior-inline: contain;
+                gap: 0.7rem;
+
+                scroll-snap-type: inline mandatory;
+                scroll-padding-inline: 1rem;
+
+                @include px470 {
+                    border-radius: 0 0 .5rem .5rem;
+                }
+
+                
+                & > * {
+                    scroll-snap-align: start;
+                }
+                
+                & > .story {
+                    @include flex(column, center, center);
+                    // border: 1px solid lime;
+                    margin: 1rem;
+                    width: 4rem;
+                    cursor: pointer;
+                    user-select: none;
+                    
+
+                    & > .img_container {
+                        @include flex(row, center, center);
+                        width: 3.75rem;
+                        height: 3.75rem;
+                        border-radius: 50%;
+                        padding: 0.175rem;
+                        background: linear-gradient(to top right, yellow, orange, deeppink);
+                        
+                        & > img {
+                            inline-size: 100%;
+                            aspect-ratio: 1/1;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            pointer-events: none;
+                            user-select: none;
+                            border: 0.2rem solid white;
+                        }
+                    }
+                    
+                    & > .name {
+                        font-size: 0.72rem;
+                        font-weight: getFontWeight(normal);
+                        color: $stories-font-color;
+                        margin-top: 0.3rem;
+                    }
+                }
+                
+                & > :last-child {
+                    width: 6rem;
+                    transform: translateX(-1rem);
+
+                    &::after {
+                        position: absolute;
+                        content: ">";
+                        text-align: center;
+                        line-height: 2rem;
+                        font-weight: getFontWeight(normal);
+                        border-radius: 50%;
+                        width: 2rem;
+                        height: 2rem;
+                        color: $secondary-text;
+                        font-size: 1.5rem;
+                        background-color: white;
+                        top: 50%; right: 2rem;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            & > .posts_container {
+                border: 1px solid hotpink;
+                border-radius: 0.5rem;
+                min-height: 120vh;
+                width: 100%;
+                margin-top: 1.1rem;
             }
         }
 

@@ -8,6 +8,7 @@ $fb-blue: rgb(59, 89, 152);
 $link: rgb(0, 55, 107);
 $link-home: rgb(199, 199, 199);
 $red: rgb(237, 73, 86);
+$stories-font-color: rgb(38, 38, 38);
 
 @mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
