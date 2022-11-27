@@ -1,6 +1,20 @@
 @import "font";
 @import "variables";
 
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $border-color;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 @mixin px1263 {
     @media only screen and (max-width: 1263px) {
         @content;
@@ -15,6 +29,12 @@
 
 @mixin px767 {
     @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin px470 {
+    @media only screen and (max-width: 470px) and (min-width: 0px) {
         @content;
     }
 }
@@ -224,18 +244,21 @@ $navbar-width: 15.25rem;
 
     #{&}--navbar_mobile {
         display: none;
-        position: fixed;
-        z-index: 999;
-
+        
         @include px767 {
             display: block;
+            position: fixed;
+            min-height: 100vh;
+            z-index: 999;
+            $main-content-padding-top: 3.7rem;
 
             & > .navbar--top_container {
-                $main-content-padding-top: 3.7rem;
                 width: 100vw;
                 height: $main-content-padding-top;
                 background-color: $primary-background;
                 border-bottom: 1px solid $border-color;
+                position: absolute;
+                top: 0; left: 0; right: 0;
                 
                 & > .navbar_top_left {
                     @include flex(row, center, center);
@@ -251,7 +274,7 @@ $navbar-width: 15.25rem;
                     }
                     
                     img {
-                        width: 6rem;
+                        width: 6.4rem;
                         cursor: pointer;
                         height: auto;
                         user-select: none;
@@ -325,9 +348,55 @@ $navbar-width: 15.25rem;
                             width: 1.6rem;
 
                             &:hover {
+                                transition: all 0.2s ease-in-out;
                                 transform: scale(1.1);
                             }
                         }
+                    }
+                }
+            }
+
+            & > .navbar--bottom_container {
+                display: none;
+                @include flex(row, space-evenly, center);
+                gap: 4%;
+                width: 100vw;
+                height: calc($main-content-padding-top - 0.5rem);
+                background-color: $primary-background;
+                border-top: 1px solid $border-color;
+                position: absolute;
+                bottom: 0; left: 0; right: 0;
+                
+                & > div {
+                    @include flex(row, center, center);
+                    height: 100%;
+                    
+                    img {
+                        width: 1.8rem;
+                        
+                        &:hover {
+                            transition: all 0.2s ease-in-out;
+                            transform: scale(1.1);
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                & > .navlink_profile img {
+                    border-radius: 50%;
+                }  
+
+                & > .navlink_messages {
+                    &::after {
+                        content: "25";
+                        color: white;
+                        font-size: 0.7rem;
+                        position: absolute;
+                        padding: 0.2rem 0.4rem;
+                        background-color: $dm-red;
+                        border-radius: 0.7rem;
+                        border: 1px solid white;
+                        transform: translate(50%, -50%);
                     }
                 }
             }
@@ -343,7 +412,6 @@ $navbar-width: 15.25rem;
 
         @include px1263 {
             $navbar-width: 4.5rem;
-            width: 100%;
             width: calc(100% - $navbar-width);
             transform: translateX($navbar-width);
         }
@@ -354,15 +422,26 @@ $navbar-width: 15.25rem;
             padding-top: $main-content-padding-top + 1rem;
         }
 
+        @include px470 {
+            padding-top: calc($main-content-padding-top + 1px);
+        }
+
         & > .main_page--content {
-            min-width: 470px;
+            width: 470px;
             min-height: 140vh;
             border: 1px solid hotpink;
-            margin: 0 2rem;
+            margin: -2rem 2rem 0;
             border-radius: 0.5rem;
 
             @include px767 {
                 // z-index: -1;
+            }
+
+            @include px470 {
+                margin: 0;
+                min-width: none;
+                max-width: 470px;
+                width: 100%;
             }
         }
 
