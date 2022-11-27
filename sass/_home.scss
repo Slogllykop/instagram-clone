@@ -418,6 +418,10 @@ $navbar-width: 15.25rem;
             margin: -2rem 2rem 0;
             border-radius: 0.5rem;
 
+            @include px767 {
+                margin: 0 2rem;
+            }
+
             @include px470 {
                 margin: 0;
                 min-width: none;
