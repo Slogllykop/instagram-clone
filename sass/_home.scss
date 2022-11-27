@@ -495,22 +495,22 @@ $navbar-width: 15.25rem;
                     width: 6rem;
                     transform: translateX(-1rem);
 
-                    &::after {
-                        position: absolute;
-                        content: ">";
-                        text-align: center;
-                        line-height: 2rem;
-                        font-weight: getFontWeight(normal);
-                        border-radius: 50%;
-                        width: 2rem;
-                        height: 2rem;
-                        color: $secondary-text;
-                        font-size: 1.5rem;
-                        background-color: white;
-                        top: 50%; right: 2rem;
-                        transform: translateY(-50%);
-                        cursor: pointer;
-                    }
+                    // &::after {
+                    //     position: absolute;
+                    //     content: ">";
+                    //     text-align: center;
+                    //     line-height: 2rem;
+                    //     font-weight: getFontWeight(normal);
+                    //     border-radius: 50%;
+                    //     width: 2rem;
+                    //     height: 2rem;
+                    //     color: $secondary-text;
+                    //     font-size: 1.5rem;
+                    //     background-color: white;
+                    //     top: 50%; right: 2rem;
+                    //     transform: translateY(-50%);
+                    //     cursor: pointer;
+                    // }
                 }
             }
 
