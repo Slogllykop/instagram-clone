@@ -170,7 +170,7 @@ fetch(url)
         hours.push(Math.floor(Math.random() * 12) + 1);
     }
 
-    hours.sort((a,b) => a -b);
+    hours.sort((a,b) => a - b);
 
     const imageUrls = data.results.map(result => result.urls.raw);
 
