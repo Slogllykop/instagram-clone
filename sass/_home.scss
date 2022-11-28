@@ -515,11 +515,189 @@ $navbar-width: 15.25rem;
             }
 
             & > .posts_container {
-                border: 1px solid hotpink;
                 border-radius: 0.5rem;
                 min-height: 120vh;
                 width: 100%;
                 margin-top: 1.1rem;
+
+                & > .post {
+                    @include flex(column, center, center);
+                    width: 100%;
+                    margin-bottom: .5rem;
+                    // border: 1px solid hotpink;
+
+                    & > .heading_container {
+                        @include flex(row, space-between, center);
+                        width: 100%;
+                        height: 3.75rem;
+                        background-color: $primary-background;
+                        border-radius: 0.5rem 0.5rem 0 0;
+                        border: 1px solid $border-color;
+                        border-bottom: none;
+
+                        & > .heading_left {
+                            @include flex(row, center, center);
+                            gap: 0.7rem;
+                            padding: 0 0.75rem;
+                            user-select: none;
+
+                            & > .post_img_container {
+                                @include flex(row, center, center);
+                                width: 2rem;
+                                height: 2rem;
+                                border-radius: 50%;
+                                background-color: $border-color;
+                                cursor: pointer;
+                                
+                                & > img {
+                                    inline-size: 100%;
+                                    aspect-ratio: 1/1;
+                                    object-fit: cover;
+                                    border-radius: 50%;  
+                                    pointer-events: none;
+                                    user-select: none;
+                                }
+                            }
+
+                            & > .post_username_container {
+                                @include flex(column, flex-start, flex-start);
+                                gap: 0.1rem;
+
+                                & > .post_username {
+                                    font-size: 0.75rem;
+                                    font-weight: getFontWeight(medium);
+                                    color: black;
+                                    cursor: pointer;
+                                }
+
+                                & > .post_place {
+                                    font-size: 0.7rem;
+                                    font-weight: getFontWeight(normal);
+                                    color: $stories-font-color;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        & > .heading_right {
+                            @include flex(row, center, center);
+                            height: 100%;
+
+                            & > .dots {
+                                font-weight: getFontWeight(bblack);
+                                padding-right: 1rem;
+                                transform: translateY(-25%);
+                                cursor: pointer;
+                                user-select: none;
+                            }
+                        }
+                    }
+
+                    & > .post_container {
+                        width: 100%;
+                        aspect-ratio: 1/1;
+                        background-color: $border-color;
+
+                        img { 
+                            inline-size: 100%;
+                            aspect-ratio: 1/1;
+                            object-fit: cover;
+                            pointer-events: none;
+                            user-select: none;
+                        }
+                    }
+
+                    & > .post_info_container {
+                        @include flex(column, center, center);
+                        width: 100%;
+                        background-color: $primary-background;
+                        border-radius: 0 0 0.5rem 0.5rem;
+                        border: 1px solid $border-color;
+                        z-index: 1;
+                        border-top: none;
+                        transform: translateY(-.5rem);
+
+                        & > .post_reaction_icons {
+                            @include flex(row, space-between, center);
+                            width: 100%;
+                            margin: .75rem 0;
+                            user-select: none;
+
+                            & > .container_left {
+                                @include flex(row, center, center);
+                                gap: 0.5rem;
+                                margin-left: .4rem;
+
+                                & > img {
+                                    width: 1.5rem;
+                                    margin: 0 .15rem;
+                                    cursor: pointer;
+
+                                    &:last-child {
+                                        transform: rotate(-23deg) scale(1.25) translate(.3rem, -.2rem);
+                                    }
+                                }
+                            }
+
+                            & > .container_right {
+                                @include flex(row, center, center);
+                                margin-right: .4rem;
+
+                                & > img {
+                                    width: 1.5rem;
+                                    margin: 0 .5rem;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        & > .post_likes_container {
+                            @include flex(row, flex-start, center);
+                            width: 100%;
+                            margin-bottom: .7rem;
+                            margin-left: 1.2rem;
+                            font-size: .8rem;
+                            font-weight: getFontWeight(medium);
+                            gap: .25rem;
+                        }
+
+                        & > .post_caption_container {
+                            @include flex(row, flex-start, center);
+                            width: 100%;
+                            margin-left: 1.2rem;
+                            font-size: .8rem;
+                            flex-wrap: wrap;
+                            gap: .25rem;
+                            margin-bottom: .7rem;
+
+                            & > .post_caption_username {
+                                font-weight: getFontWeight(medium);
+                                cursor: pointer;
+                            }
+                        }
+
+                        & > .view_comments_container {
+                            @include flex(row, flex-start, center);
+                            width: 100%;
+                            margin-left: 1.2rem;
+                            font-size: .85rem;
+                            font-weight: getFontWeight(normal);
+                            margin-bottom: .7rem;
+                            cursor: pointer;
+                            color: $secondary-text;
+                        }
+
+                        & > .hours_container {
+                            @include flex(row, flex-start, center);
+                            width: 100%;
+                            margin-left: 1.2rem;
+                            font-size: .6rem;
+                            font-weight: getFontWeight(light);
+                            margin-bottom: .7rem;
+                            color: $secondary-text;
+                        }
+                    }
+                }
             }
         }
 

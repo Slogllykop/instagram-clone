@@ -7,7 +7,7 @@ $font-weights : (
     "semi-bold": 600,
     "bold": 700,
     "extra-bold": 800,
-    "black": 900
+    "bblack": 900
 );
 
 @function getFontWeight($weight) {
