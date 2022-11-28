@@ -25,6 +25,12 @@
     }
 }
 
+@mixin px735 {
+    @media only screen and (max-width: 735px) {
+        @content;
+    }
+}
+
 $dm-red: rgb(255, 48, 64);
 $search-bg: rgb(239, 239, 239);
 $navbar-width: 15.25rem;
@@ -611,11 +617,14 @@ $navbar-width: 15.25rem;
                         @include flex(column, center, center);
                         width: 100%;
                         background-color: $primary-background;
-                        border-radius: 0 0 0.5rem 0.5rem;
                         border: 1px solid $border-color;
                         z-index: 1;
                         border-top: none;
                         transform: translateY(-.5rem);
+
+                        @include px735 {
+                            border-radius: 0 0 0.5rem 0.5rem;
+                        }
 
                         & > .post_reaction_icons {
                             @include flex(row, space-between, center);
@@ -662,17 +671,20 @@ $navbar-width: 15.25rem;
                         }
 
                         & > .post_caption_container {
-                            @include flex(row, flex-start, center);
+                            @include flex(row, flex-start, flex-start);
                             width: 100%;
                             margin-left: 1.2rem;
                             font-size: .8rem;
-                            flex-wrap: wrap;
                             gap: .25rem;
                             margin-bottom: .7rem;
 
                             & > .post_caption_username {
                                 font-weight: getFontWeight(medium);
                                 cursor: pointer;
+                            }
+
+                            & > .post_caption {
+                                width: 80%;
                             }
                         }
 
@@ -695,6 +707,65 @@ $navbar-width: 15.25rem;
                             font-weight: getFontWeight(light);
                             margin-bottom: .7rem;
                             color: $secondary-text;
+                        }
+                    }
+
+                    & > .post_comment_container {
+                        @include flex(row, center, center);
+                        width: 100%;
+                        height: 3rem;
+                        background-color: $primary-background;
+                        border: 1px solid $border-color;
+                        border-radius: 0 0 .5rem .5rem;
+                        transform: translateY(calc(-.5rem - 1px));
+
+                        @include px735 {
+                            display: none;
+                        }
+
+                        & > .icon_container {
+                            @include flex(row, center, center);
+                            height: 100%;
+                            width: 50px;
+                            user-select: none;
+
+                            img {
+                                width: 60%;
+                                cursor: pointer;
+                            }
+                        }
+
+                        & > .post_comment_button {
+                            @include flex(row, center, center);
+                            height: 100%;
+                            user-select: none;
+
+                            button {
+                                background-color: transparent;
+                                color: $blue;
+                                font-size: .9rem;
+                                border: none;
+                                cursor: pointer;
+                                width: 65px;
+                                font-weight: getFontWeight(bold);
+                            }
+                        }
+
+                        & > .post_comment_box {
+                            width: 355px;
+                            height: 100%;
+
+                            input {
+                                width: 100%;
+                                height: 100%;
+                                border: none;
+                                outline: none;
+                                font-size: .9rem;
+                                font-weight: getFontWeight(normal);
+                                padding-left: .5rem;
+                                color: $stories-font-color;
+                                background-color: transparent;
+                            }
                         }
                     }
                 }

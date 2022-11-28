@@ -45,8 +45,28 @@ const login = () => {
     }
 }
 
-// ===========================================================================================
-// ===========================================================================================
+// ================================================================================================================================================================================================================================================================================================================================================================================
+// ================================================================================================================================================================================================================================================================================================================================================================================
+
+const postButton = document.querySelectorAll('.post_comment_button button');
+const commentBox = document.querySelectorAll('.post_comment_box input');
+
+commentBox.forEach(box => {
+    box.addEventListener('click', () => {
+        if (box.value.length !== 0) {
+            postButton.disabled = false;
+            postButton.style.cursor = "pointer";
+            postButton.style.color = "rgb(0, 149, 246)";
+        } else {
+            postButton.disabled = true;
+            postButton.style.cursor = "not-allowed";
+            postButton.style.color = "rgb(178, 223, 252)";
+        }
+    })
+})
+
+// ================================================================================================================================================================================================================================================================================================================================================================================
+// ================================================================================================================================================================================================================================================================================================================================================================================
 
 // plox don't bully my key (request)
 let key = "FLOnPA-x3biFG1Z9hCx5VBq2tfaEFIZip7U4AvKmHkc";
@@ -54,7 +74,66 @@ let key = "FLOnPA-x3biFG1Z9hCx5VBq2tfaEFIZip7U4AvKmHkc";
 let keywords = ["supercars", "india", "hillstations", "tropical", "beach", "party", "cinematic", "travel", "tourist", "sunset", "nature", "random", "football", "photography", "programming", "coding", "gaming", "gaming%20pcs", "gaming%20setup", "landscape", "potraits", "bikes", "superbikes", "culture", ""];
 let my = keywords[Math.floor(Math.random() * keywords.length)];
 
-const numberOfPosts = 5;
+const postTemplate = `
+<div class="post">
+    <div class="heading_container">
+        <div class="heading_left">
+            <div class="post_img_container"></div>
+            <div class="post_username_container">
+                <div class="post_username">Username_of_person</div>
+                <div class="post_place">Earth</div>
+            </div>
+        </div>
+        <div class="heading_right">
+            <div class="dots">...</div>
+        </div>
+    </div>
+    <div class="post_container"></div>
+    <div class="post_info_container">
+        <div class="post_reaction_icons">
+            <div class="container_left">
+                <img src="img/icons/heart-outlined.svg" alt="H">
+                <img src="img/icons/chat.svg" alt="C">
+                <img src="img/icons/send.svg" alt="S">
+            </div>
+            <div class="container_right">
+                <img src="img/icons/bookmark.svg" alt="B">
+            </div>
+        </div>
+        <div class="post_likes_container">
+            <div class="likes_number">56435</div>
+            <span>likes</span>
+        </div>
+        <div class="post_caption_container">
+            <div class="post_caption_username">Username_of_person</div>
+            <div class="post_caption">Great image</div>
+        </div>
+        <div class="view_comments_container">
+            <div class="view_comments"></div>
+        </div>
+        <div class="hours_container">
+            <div class="hours"></div>
+        </div>
+    </div>
+    <div class="post_comment_container">
+        <div class="icon_container">
+            <img src="img/icons/smiley.svg" alt="S">
+        </div>
+        <div class="post_comment_box">
+            <input type="text" placeholder="Add a comment...">
+        </div>
+        <div class="post_comment_button">
+            <button disabled>Post</button>
+        </div>
+    </div>
+</div>
+`;
+
+const numberOfPosts = 20;
+
+for (let i = 0; i < numberOfPosts; i++) {
+    document.querySelector('.posts_container').insertAdjacentHTML('beforeend', postTemplate);
+}
 
 let url = `https://api.unsplash.com/search/photos/?query=${my}&per_page=${numberOfPosts*2}&client_id=${key}`;
 window.addEventListener("load", console.warn("API ==> ",url));
@@ -129,7 +208,12 @@ fetch(url)
 
         // post caption
         if (!(data.results[i].description === null)) {
-            postCaption[i].textContent = data.results[i].description;
+            let tempstr = `${data.results[i].description.slice(0, 50)} ...more`;
+            if (data.results[i].description.length >= 50) {
+                postCaption[i].textContent = tempstr;
+            } else {
+                postCaption[i].textContent = data.results[i].description;
+            }
         }
 
         // comments counter
