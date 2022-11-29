@@ -160,8 +160,6 @@ const postHours = document.querySelectorAll('.hours');
 const storyImg = document.querySelectorAll('.story > .img_container');
 const storyUsername = document.querySelectorAll('.story > .name');
 
-console.log(postImg, postUsername, postPlace);
-
 fetch(url)
 .then(response => {
     if(response.ok) {
@@ -185,10 +183,7 @@ fetch(url)
 
     hours.sort((a,b) => a - b);
 
-    const imageUrls = data.results.map(result => result.urls.small);
-
     console.log("Data ==> ", data.results);
-    console.log("Images only ==> ", imageUrls);
 
     for(let i = 0; i < numberOfPosts; i++) {
         // story img
@@ -198,7 +193,7 @@ fetch(url)
 
         // main post imgage
         imageNodes[i] = document.createElement('img');
-        imageNodes[i].src = data.results[i].urls.small;
+        imageNodes[i].src = data.results[i].urls.regular;
         postImg[i].appendChild(imageNodes[i]);
 
         // post username
