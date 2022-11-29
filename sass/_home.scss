@@ -240,7 +240,7 @@ $navbar-width: 15.25rem;
         @include px767 {
             display: block;
             position: fixed;
-            min-height: 100vh;
+            min-height: 100%;
             z-index: 999;
             $main-content-padding-top: 3.7rem;
 
@@ -525,6 +525,7 @@ $navbar-width: 15.25rem;
                 min-height: 120vh;
                 width: 100%;
                 margin-top: 1.1rem;
+                padding-bottom: 4rem;
 
                 & > .post {
                     @include flex(column, center, center);

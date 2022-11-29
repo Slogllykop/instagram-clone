@@ -129,10 +129,20 @@ const postTemplate = `
 </div>
 `;
 
+const storyTemplate = `
+<div class="story">
+    <div class="img_container">
+    </div>
+    <div class="name">Username...</div>
+</div>
+`;
+
 const numberOfPosts = 20;
+
 
 for (let i = 0; i < numberOfPosts; i++) {
     document.querySelector('.posts_container').insertAdjacentHTML('beforeend', postTemplate);
+    document.querySelector('.stories_container').insertAdjacentHTML('beforeend', storyTemplate);
 }
 
 let url = `https://api.unsplash.com/search/photos/?query=${my}&per_page=${numberOfPosts*2}&client_id=${key}`;
@@ -147,6 +157,8 @@ const postCaptionUsername = document.querySelectorAll('.post_caption_username');
 const postCaption = document.querySelectorAll('.post_caption');
 const commentsCounter = document.querySelectorAll('.view_comments');
 const postHours = document.querySelectorAll('.hours');
+const storyImg = document.querySelectorAll('.story > .img_container');
+const storyUsername = document.querySelectorAll('.story > .name');
 
 console.log(postImg, postUsername, postPlace);
 
@@ -165,6 +177,7 @@ fetch(url)
     const placeNodes = [];
     const ProfPicNodes = [];
     const hours = [];
+    const storyNodes = [];
 
     for (let i = 0; i < numberOfPosts; i++) {
         hours.push(Math.floor(Math.random() * 12) + 1);
@@ -172,15 +185,20 @@ fetch(url)
 
     hours.sort((a,b) => a - b);
 
-    const imageUrls = data.results.map(result => result.urls.raw);
+    const imageUrls = data.results.map(result => result.urls.small);
 
     console.log("Data ==> ", data.results);
     console.log("Images only ==> ", imageUrls);
 
     for(let i = 0; i < numberOfPosts; i++) {
+        // story img
+        storyNodes[i] = document.createElement('img');
+        storyNodes[i].src = data.results[i].user.profile_image.medium;
+        storyImg[i].appendChild(storyNodes[i]);
+
         // main post imgage
         imageNodes[i] = document.createElement('img');
-        imageNodes[i].src = data.results[i].urls.raw;
+        imageNodes[i].src = data.results[i].urls.small;
         postImg[i].appendChild(imageNodes[i]);
 
         // post username
@@ -190,6 +208,14 @@ fetch(url)
             
             // post caption username
             postCaptionUsername[i].textContent = usernameNodes[i];
+
+            // story username
+            let tempstr = `${usernameNodes[i].slice(0,9)}...`;
+            if (usernameNodes[i].length > 9) {
+                storyUsername[i].textContent = tempstr;
+            } else {
+                storyUsername[i].textContent = usernameNodes[i];
+            }
         }
 
         // post place
