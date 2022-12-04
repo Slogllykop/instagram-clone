@@ -146,7 +146,7 @@ for (let i = 0; i < numberOfPosts; i++) {
 }
 
 let url = `https://api.unsplash.com/search/photos/?query=${my}&per_page=${numberOfPosts*2}&client_id=${key}`;
-window.addEventListener("load", console.warn("API ==> ",url));
+// window.addEventListener("load", console.warn("API ==> ",url));
 
 const postProfPic = document.querySelectorAll('.post_img_container');
 const postUsername = document.querySelectorAll('.post_username');
